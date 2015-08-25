@@ -26,9 +26,8 @@ function keyUp(event){
         refillBox();
         return;
     }
-    var score;
-    score = document.getElementById('bowling').value;
-    alert(score);
+    var result = document.getElementById('bowling').value;
+    alert(score(result));
     refillBox();
     rolling = false;
 }
@@ -56,4 +55,8 @@ function getLaneString(){
         }
         return str;
     }
+}
+
+function score(lane){
+    return lane.slice(-1);
 }
