@@ -1,4 +1,4 @@
-var blocker = false;
+var blockInput = false;
 var rolling = true;
 
 var leadingZeroes = 5;
@@ -9,12 +9,12 @@ start();
 
 function start(){
     readOnly(false);
-    blocker = false;
+    blockInput = false;
     refillBox();
 }
 
 function keyDown(event){
-    if (blocker || event.keyCode !== 8){
+    if (blockInput || event.keyCode !== 8){
         refillBox();
         return;
     }
@@ -22,7 +22,7 @@ function keyDown(event){
 }
 
 function keyUp(event){
-    if (blocker || !rolling || event.keyCode !== 8){
+    if (blockInput || !rolling || event.keyCode !== 8){
         refillBox();
         return;
     }
