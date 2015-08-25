@@ -1,12 +1,16 @@
-refillBox();
-readOnly(false);
-
 var blocker = false;
 var rolling = true;
+
+var leadingZeroes = 5;
+var pins = "135797531";
+var trailingZeroes = 56;
+
+start();
 
 function start(){
     readOnly(false);
     blocker = false;
+    refillBox();
 }
 
 function keyDown(event){
@@ -34,5 +38,22 @@ function readOnly(tf){
 }
 
 function refillBox(){
-    document.getElementById('bowling').value = "0000013579753100000000000000000000000000000000000000000000000000000000";
+    document.getElementById('bowling').value = getLaneString();
+}
+
+function getLaneString(){
+    var lane = '';
+
+    lane = addZeroesToString(lane, leadingZeroes);
+    lane = lane + pins;
+    lane = addZeroesToString(lane, trailingZeroes);
+    
+    return lane;
+    
+    function addZeroesToString(str, numOfZeroes){
+        for (i = 0; i < numOfZeroes; i++){
+            str = str + '0';
+        }
+        return str;
+    }
 }
