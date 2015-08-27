@@ -5,6 +5,7 @@ var leadingZeroes = 5;
 var pins = "135797531";
 var trailingZeroes = 56;
 var frame = 1;
+var totalScore = 0;
 
 readOnly(true);
 refillBox();
@@ -63,8 +64,13 @@ function getLaneString() {
 
 function score(lane) {
     var score = getScore(lane);
+    totalScore += score;
     document.getElementById('scoretable').rows[frame].cells[1].firstChild.data = score;
     alert('You\'ve scored ' + score);
+    if (frame >= 10) {
+        endGame();
+    }
+
 }
 
 function advanceFrame() {
@@ -72,5 +78,14 @@ function advanceFrame() {
 }
 
 function getScore(lane) {
-    return lane.slice(-1);
+    return parseInt(lane.slice(-1));
+}
+
+function endGame() {
+    alert('Total score: ' + totalScore);
+    reset();
+}
+
+function reset() {
+
 }
