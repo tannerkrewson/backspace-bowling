@@ -5,8 +5,6 @@ var leadingZeroes = 5;
 var pins = "135797531";
 var trailingZeroes = 56;
 
-start();
-
 function start(){
     readOnly(false);
     blockInput = false;
