@@ -64,13 +64,22 @@ function getLaneString() {
 
 function score(lane) {
     var score = getScore(lane);
-    totalScore += score;
+    addToTotal(score);
+    writeTotal(totalScore);
     document.getElementById('scoretable').rows[frame].cells[1].firstChild.data = score;
     alert('You\'ve scored ' + score);
     if (frame >= 10) {
         endGame();
     }
 
+}
+
+function addToTotal(n){
+    totalScore += n;
+}
+
+function writeTotal(total){
+    document.getElementById('scoretable').rows[11].cells[1].firstChild.data = total;
 }
 
 function advanceFrame() {
