@@ -1,14 +1,16 @@
+const leadingZeroes = 5;
+const pins = "135797531";
+const trailingZeroes = 56;
+
+const laneBox = document.getElementById('bowling');
+const scoreTable = document.getElementById('scoretable');
+
 var blockInput = true;
 var rolling = true;
-
-var leadingZeroes = 5;
-var pins = "135797531";
-var trailingZeroes = 56;
 var frame = 1;
 var totalScore = 0;
 
 readOnly(true);
-refillBox();
 
 function startBowling() {
     readOnly(false);
@@ -21,7 +23,6 @@ function keyDown(event) {
         refillBox();
         return;
     }
-    console.log("keydown");
     rolling = true;
 }
 
@@ -30,7 +31,7 @@ function keyUp(event) {
         refillBox();
         return;
     }
-    var result = document.getElementById('bowling').value;
+    var result = laneBox.value;
     score(result);
     advanceFrame();
     refillBox();
@@ -38,11 +39,11 @@ function keyUp(event) {
 }
 
 function readOnly(tf) {
-    document.getElementById('bowling').readOnly = tf;
+    laneBox.readOnly = tf;
 }
 
 function refillBox() {
-    document.getElementById('bowling').value = getLaneString();
+    laneBox.value = getLaneString();
 }
 
 function getLaneString() {
@@ -66,12 +67,11 @@ function score(lane) {
     var score = getScore(lane);
     addToTotal(score);
     writeTotal(totalScore);
-    document.getElementById('scoretable').rows[frame].cells[1].firstChild.data = score;
+    scoreTable.rows[frame].cells[1].firstChild.data = score;
     alert('You\'ve scored ' + score);
     if (frame >= 10) {
         endGame();
     }
-
 }
 
 function addToTotal(n){
@@ -79,7 +79,7 @@ function addToTotal(n){
 }
 
 function writeTotal(total){
-    document.getElementById('scoretable').rows[11].cells[1].firstChild.data = total;
+    scoreTable.rows[11].cells[1].firstChild.data = total;
 }
 
 function advanceFrame() {
@@ -92,9 +92,4 @@ function getScore(lane) {
 
 function endGame() {
     alert('Total score: ' + totalScore);
-    reset();
-}
-
-function reset() {
-
 }
