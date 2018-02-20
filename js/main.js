@@ -16,6 +16,7 @@ setLaneBoxReadOnly(true);
 
 function startBowling() {
     refillBox();
+    clearScoreTable();
     frame = 1;
     totalScore = 0;
     gameInProgress = true;
@@ -106,7 +107,7 @@ function addToTotal(n){
 }
 
 function writeTotal(total){
-    scoreTable.rows[11].cells[1].firstChild.data = total;
+    scoreTable.rows[totalNumberOfFrames+1].cells[1].firstChild.data = total;
 }
 
 function advanceFrame() {
@@ -122,4 +123,10 @@ function endGame() {
     setLaneBoxReadOnly(true);
     alert('Total score: ' + totalScore);
     clearBox();
+}
+
+function clearScoreTable() {
+    for (var i = 1; i <= totalNumberOfFrames + 1; i++) {
+        scoreTable.rows[i].cells[1].firstChild.data = '';
+    }
 }
