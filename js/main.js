@@ -1,26 +1,34 @@
 const leadingZeroes = 5;
 const pins = "135797531";
 const trailingZeroes = 56;
+const totalNumberOfFrames = 10;
 
 const laneBox = document.getElementById('bowling');
 const scoreTable = document.getElementById('scoretable');
 
-var blockInput = true;
-var rolling = true;
-var frame = 1;
-var totalScore = 0;
+var blockInput;
+var rolling = false;
+var frame;
+var totalScore;
+var gameInProgress = false;
 
-readOnly(true);
+setLaneBoxReadOnly(true);
 
 function startBowling() {
-    readOnly(false);
-    blockInput = false;
+    setLaneBoxReadOnly(false);
     refillBox();
+    frame = 1;
+    totalScore = 0;
+    gameInProgress = true;
 }
 
 function keyDown(event) {
     if (blockInput || event.keyCode !== 8) {
-        refillBox();
+        if (gameInProgress) {
+            refillBox();
+        } else {
+            clearBox();
+        }
         return;
     }
     rolling = true;
@@ -28,7 +36,11 @@ function keyDown(event) {
 
 function keyUp(event) {
     if (blockInput || !rolling || event.keyCode !== 8) {
-        refillBox();
+        if (gameInProgress) {
+            refillBox();
+        } else {
+            clearBox();
+        }
         return;
     }
     var result = laneBox.value;
@@ -38,12 +50,19 @@ function keyUp(event) {
     rolling = false;
 }
 
-function readOnly(tf) {
+function setLaneBoxReadOnly(tf) {
+    blockInput = tf;
     laneBox.readOnly = tf;
 }
 
 function refillBox() {
     laneBox.value = getLaneString();
+    console.log('yo!');
+}
+
+function clearBox() {
+    laneBox.value = '';
+    console.log('hey');
 }
 
 function getLaneString() {
@@ -69,7 +88,7 @@ function score(lane) {
     writeTotal(totalScore);
     scoreTable.rows[frame].cells[1].firstChild.data = score;
     alert('You\'ve scored ' + score);
-    if (frame >= 10) {
+    if (frame >= totalNumberOfFrames) {
         endGame();
     }
 }
@@ -91,5 +110,8 @@ function getScore(lane) {
 }
 
 function endGame() {
+    gameInProgress = false;
+    setLaneBoxReadOnly(true);
     alert('Total score: ' + totalScore);
+    clearBox();
 }
