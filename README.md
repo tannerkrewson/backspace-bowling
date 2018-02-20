@@ -1,8 +1,8 @@
-# Computer Bowling
+# Backspace Bowling
 
-#### Play now at: [http://tannerkrewson.github.io/computer-bowling/](http://tannerkrewson.github.io/computer-bowling/)
+#### Play now at: [http://www.tannerkrewson.com/backspace-bowling/](http://www.tannerkrewson.com/backspace-bowling/)
 
-This game was made exclusively on a computer in my Personal Finance class during my senior year of high school when I probably should have been doing other things. It's okay though, I got an A in the class. Anyways, it has a few bugs, but for the sake of preserving history, I have kept it as it was originally. There is a glitch to score 9 everytime; see if you can figure it out.
+This game was made exclusively on a computer in my Personal Finance class during my senior year of high school when I probably should have been doing other things. It's okay though, I got an A in the class. Anyways, it has a few bugs, but for the sake of preserving history, I have kept it as it was originally. There is a glitch to score 9 every time; see if you can figure it out.
 
 ## How to Play
 1. Click the Start button.
