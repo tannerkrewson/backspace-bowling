@@ -15,11 +15,12 @@ var gameInProgress = false;
 setLaneBoxReadOnly(true);
 
 function startBowling() {
-    setLaneBoxReadOnly(false);
     refillBox();
     frame = 1;
     totalScore = 0;
     gameInProgress = true;
+    setLaneBoxReadOnly(false);
+    focusBox();
 }
 
 function keyDown(event) {
@@ -45,9 +46,12 @@ function keyUp(event) {
     }
     var result = laneBox.value;
     score(result);
-    advanceFrame();
-    refillBox();
-    rolling = false;
+    if (gameInProgress) {
+        advanceFrame();
+        refillBox();
+        focusBox();
+        rolling = false;
+    }
 }
 
 function setLaneBoxReadOnly(tf) {
@@ -63,6 +67,10 @@ function refillBox() {
 function clearBox() {
     laneBox.value = '';
     console.log('hey');
+}
+
+function focusBox() {
+    laneBox.focus();
 }
 
 function getLaneString() {
