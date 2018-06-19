@@ -1,77 +1,61 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <style>
+            body { text-align: center; }
+            th { min-width: 1.5em; }
+            table { margin-left:auto; margin-right:auto; }
+        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Backspace Bowling</title>
     </head>
     <body>
-        <button id="start" type="button" onClick="startBowling()">Start New Game</button>
-        <div align="center">
-            <input type="text" id="bowling" style="width:600px;" onkeydown="keyDown(event)" onkeyup="keyUp(event)" autofocus>
-        </div>
+        <br>
+        <input type="text" id="bowling" style="width:600px;" onkeydown="keyDown(event)" onkeyup="keyUp(event)" autofocus>
+        <br><br>
         <table id="scoretable" border="1" cellpadding="1" cellspacing="1">
-            <tbody>
-                <tr>
-                    <td>Frame</td>
-                    <td>Score</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td id="f1">&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td id="f2">&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td id="f3">&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td id="f4">&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td id="f5">&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td id="f6">&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td id="f7">&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td id="f8">&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td id="f9">&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td id="f10">&nbsp;</td>
-                </tr>
-                <tr>
-                    <td><b>Total</b></td>
-                    <td id="total">&nbsp;</td>
-                </tr>
-            </tbody>
+            <tr>
+                <th>Frame</th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                <th>8</th>
+                <th>9</th>
+                <th>10</th>
+                <th><b>Total</b></th>
+            </tr>
+            <tr>
+                <td>Score</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
         </table>
-
-        <footer align="center">
+        <br>
+        <button id="start" type="button" onClick="startBowling()">Start New Game</button>
+        <br><br>
+        <footer>
             Backspace Bowling by
             <a href="https://www.tannerkrewson.com/" target="_blank">
                 Tanner Krewson
             </a>
-            <br />
+            <br>
             <a href="https://github.com/tannerkrewson/backspace-bowling" target="_blank">
                 View on GitHub
             </a>
         </footer>
-
         <script>
             const leadingZeroes = 5;
             const pins = "135797531";
@@ -137,12 +121,10 @@
 
             function refillBox() {
                 laneBox.value = getLaneString();
-                console.log('yo!');
             }
 
             function clearBox() {
                 laneBox.value = '';
-                console.log('hey');
             }
 
             function focusBox() {
@@ -170,7 +152,7 @@
                 var score = getScore(lane);
                 addToTotal(score);
                 writeTotal(totalScore);
-                scoreTable.rows[frame].cells[1].firstChild.data = score;
+                scoreTable.rows[1].cells[frame].textContent = score;
                 alert('You\'ve scored ' + score);
                 if (frame >= totalNumberOfFrames) {
                     endGame();
@@ -182,7 +164,7 @@
             }
 
             function writeTotal(total){
-                scoreTable.rows[totalNumberOfFrames+1].cells[1].firstChild.data = total;
+                scoreTable.rows[1].cells[totalNumberOfFrames+1].textContent = total;
             }
 
             function advanceFrame() {
@@ -202,7 +184,7 @@
 
             function clearScoreTable() {
                 for (var i = 1; i <= totalNumberOfFrames + 1; i++) {
-                    scoreTable.rows[i].cells[1].firstChild.data = '';
+                    scoreTable.rows[1].cells[i].textContent = '';
                 }
             }
 
