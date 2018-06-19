@@ -1,8 +1,13 @@
 # Backspace Bowling
 
-#### Play now at: [http://www.tannerkrewson.com/backspace-bowling/](http://www.tannerkrewson.com/backspace-bowling/)
+#### Play now at: [www.tannerkrewson.com/backspace-bowling/](https://www.tannerkrewson.com/backspace-bowling/)
 
-This game was made exclusively on a computer in my Personal Finance class during my senior year of high school when I probably should have been doing other things. It's okay though, I got an A in the class. There is a glitch to score 9 every time; see if you can figure it out.
+This game was made exclusively on a computer in my Personal Finance class during my senior year of high school when I probably should have been doing other things. It's okay though, I got an A in the class.
+
+I've made a few improvements since then, but it's still very barebones. It adds to the charm, really.
+Its got that 90s website feel. Pure nostalgia. But don't try to play on your phone.
+
+There is a glitch to score 9 every time; see if you can figure it out.
 
 ## How to Play
 1. Click the Start button.
