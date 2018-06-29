@@ -163,7 +163,13 @@
                 addToTotal(score);
                 writeTotal(totalScore);
                 scoreTable.rows[1].cells[frame].textContent = score;
-                alert('You\'ve scored ' + score);
+                var scoreMessage = 'You\'ve scored ' + score + ', ';
+                if (score >= 9) {
+                    scoreMessage += 'good.';
+                } else {
+                    scoreMessage += 'you suck.';
+                }
+                alert(scoreMessage);
                 if (frame >= totalNumberOfFrames) {
                     endGame();
                 }
@@ -188,7 +194,15 @@
             function endGame() {
                 gameInProgress = false;
                 setLaneBoxReadOnly(true);
-                alert('Total score: ' + totalScore);
+                var endMessage = 'Game\'s over. '
+                var pinsMissed = 90 - totalScore;
+
+                if (pinsMissed > 0) {
+                    endMessage += 'You missed ' + pinsMissed + ' pins.';
+                } else {
+                    endMessage += 'You knocked down all 90 pins. That\'s time you\'ll never get back.';
+                }
+                alert(endMessage);
                 clearBox();
             }
 
